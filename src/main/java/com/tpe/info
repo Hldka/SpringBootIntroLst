@@ -1,0 +1,7 @@
+spring.datasource.url=jdbc:postgresql://localhost:5432/sboot_intro_db->bilgi kaynagimin adresi
+spring.datasource.username=db_user-> kullanbilmem icin user
+spring.datasource.password=db_password->kullanbilmem icin paasword
+spring.jpa.show-sql=true-> default degeri false kodu göremem olmazsa
+spring.jpa.hibernate.ddl-auto=update->güncellme
+spring.jpa.properties.hibarnate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql=true-> kargacik burgacik yazi olmasin
