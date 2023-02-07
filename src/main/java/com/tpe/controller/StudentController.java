@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController//restfull mimariyi kullandigim icin , sql methodlari set edebiliyorum
-@RequestMapping("/students") // http://localhost:8080/students  bu annnotationlari iliskilendirir dispatcherservlet'e gelenei gerekli class'a gönderiyor
+@RequestMapping("/students") // http://localhost:8088/students  bu annnotationlari iliskilendirir dispatcherservlet'e gelenei gerekli class'a gönderiyor
 public class StudentController {
 
     Logger logger = LoggerFactory.getLogger(StudentController.class);
@@ -41,7 +41,7 @@ public class StudentController {
     }
 
     // !!! Student objesi oluşturalım
-    @PostMapping  // http://localhost:8080/students + POST + JSON// yeni birsey create edecegim icin
+    @PostMapping  // http://localhost:8088/students + POST + JSON// yeni birsey create edecegim icin
     public ResponseEntity<Map<String,String>> createStudent(@Valid  @RequestBody Student student) {
         // @Valid : parametreler valid mi kontrol eder, bu örenekte Student
             //objesi oluşturmak için  gönderilen fieldlar yani

@@ -31,6 +31,7 @@ public class StudentService {// bu isin bestpractice'i interface , interface gü
 
     }
 
+
     public Student findStudent(Long id) {
         return studentRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Student not found with id :" + id));
