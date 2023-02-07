@@ -21,8 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/students") // http://localhost:8080/students
+@RestController//restfull mimariyi kullandigim icin , sql methodlari set edebiliyorum
+@RequestMapping("/students") // http://localhost:8080/students  bu annnotationlari iliskilendirir dispatcherservlet'e gelenei gerekli class'a gönderiyor
 public class StudentController {
 
     Logger logger = LoggerFactory.getLogger(StudentController.class);

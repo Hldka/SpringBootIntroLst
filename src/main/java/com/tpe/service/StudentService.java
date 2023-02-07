@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class StudentService {
+@Service// ihtiyac duyulan bütün annotationlar icinde
+public class StudentService {// bu isin bestpractice'i interface , interface güncellemede kolaylik saglar
 
     @Autowired
     private StudentRepository studentRepository;

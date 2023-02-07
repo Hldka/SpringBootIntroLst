@@ -11,12 +11,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Getter// geter hepsini sildim
+@Setter// seter'lari sildim onlarin isini görüyor
 @AllArgsConstructor
-//@RequiredArgsConstructor
+//@RequiredArgsConstructor// final setlediginiz seylerden contructor olusturuyor
 @NoArgsConstructor
-@Entity
+@Entity//db gidecek class'im
 public class Student {
 
     @Id
@@ -25,10 +25,10 @@ public class Student {
     @Setter(AccessLevel.NONE)
     private Long id;
 
-    @NotNull(message = "first name can not be null")
-    @NotBlank(message="fist name can not be white space")
+    @NotNull(message = "first name can not be null")// null olamaz
+    @NotBlank(message="fist name can not be white space")// space engelemek icin
     @Size(min=2,max=25,message =
-            "First name '${validatedValue}' must be between {min} and {max} long")
+            "First name '${validatedValue}' must be between {min} and {max} long")//ismi sinirlamak icin
     @Column(nullable = false, length = 25)
     //@Getter
     /*final*/ private String name; // A
@@ -43,10 +43,10 @@ public class Student {
     @Email(message="Provide valid email")
     /*final*/ private String email; //xxx@yyy.com
 
-    /*final*/ private String phoneNumber;
+    /*final*/ private String phoneNumber;// phonenumber 'lara bir daha islem yapmayacgim icin string aldim
 
     @Setter(AccessLevel.NONE)
-    private LocalDateTime createDate = LocalDateTime.now();
+    private LocalDateTime createDate = LocalDateTime.now();// olustugu zamani bilmek icin
 
     @OneToMany(mappedBy = "student")
     private List<Book> books = new ArrayList<>();

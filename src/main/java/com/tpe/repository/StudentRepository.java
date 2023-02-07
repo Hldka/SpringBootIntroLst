@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student, Long > {
+public interface StudentRepository extends JpaRepository<Student, Long > {// repository interface olmali
+    //JpaRepository<Student, Long > pojo Class'in ismi id'sinin data türü (@repository annotation koymasak da calisir extendsettigimi icin calisir)
     boolean existsByEmail(String email);
     // Spring Data JPA içinde existById() var fakat Spring Data JPA bize sondaki eki istediğimiz değişken ismi ile
     //değiştirmemize izin veriyor, mevcut metodu bu şekilde türetebiliyoruz.
