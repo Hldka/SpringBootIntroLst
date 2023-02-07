@@ -34,14 +34,14 @@ public class StudentController {
     // !!! Bütün öğrenciler gelsin
     @GetMapping // http://localhost:8080/students + GET
     //@PreAuthorize("hasRole('ADMIN')") // HasRole den dolayı ROLE_ADMIN yazmamıza gerek kalmadı.
-    public ResponseEntity<List<Student>> getAll(){
+    public ResponseEntity<List<Student>> getAll(){//ögrenciler gelecek ,response oldugu icin httpp status kodu ile kolay göndermek icin generic yapidir.
         List<Student> students = studentService.getAll();
 
         return ResponseEntity.ok(students); // 200 kodunu HTTP Status kodu olarak gönderir
     }
 
     // !!! Student objesi oluşturalım
-    @PostMapping  // http://localhost:8080/students + POST + JSON
+    @PostMapping  // http://localhost:8080/students + POST + JSON// yeni birsey create edecegim icin
     public ResponseEntity<Map<String,String>> createStudent(@Valid  @RequestBody Student student) {
         // @Valid : parametreler valid mi kontrol eder, bu örenekte Student
             //objesi oluşturmak için  gönderilen fieldlar yani
@@ -50,7 +50,7 @@ public class StudentController {
             //Student objesine map edilmesini sağlıyor.
         studentService.createStudent(student);
 
-        Map<String,String> map = new HashMap<>();
+        Map<String,String> map = new HashMap<>();// bunu sadece burada kullancam onun icin newledim , u beni bagimli yapmiyor
         map.put("message","Student is created successfuly");
         map.put("status" ,"true");
 

@@ -19,11 +19,11 @@ public class StudentService {// bu isin bestpractice'i interface , interface gü
     private StudentRepository studentRepository;
 
     public List<Student> getAll() {
-        return studentRepository.findAll(); // SELECT * FROM student
+        return studentRepository.findAll(); // SELECT * FROM student repository'e otomatik kendisi gidiyor.(bir satir sql,Hql yazmadik )
     }
 
     public void createStudent(Student student) {
-        if(studentRepository.existsByEmail(student.getEmail())) {
+        if(studentRepository.existsByEmail(student.getEmail())) {//türetibelin bir method
             throw new ConflictException("Email is already exist");
 
         }
