@@ -59,21 +59,21 @@ public class StudentController {
 
     // !!! Id ile öğrenci getirelim @RequestParam ile
     @GetMapping("/query") // http://localhost:8080/students/query?id=1
-    public ResponseEntity<Student> getStudent(@RequestParam("id") Long id){
+    public ResponseEntity<Student> getStudent(@RequestParam("id") Long id){// birden fazla icin
         Student student =studentService.findStudent(id);
         return ResponseEntity.ok(student);
     }
 
     // !!! Id ile öğrenci getirelim @PathVariable ile
-    @GetMapping("{id}") // http://localhost:8080/students/1  + GET
-    public ResponseEntity<Student> getStudentWithPath(@PathVariable("id") Long id){
+    @GetMapping("{id}") // http://localhost:8088/students/1  + GET
+    public ResponseEntity<Student> getStudentWithPath(@PathVariable("id") Long id){// bir data almak icin (service katmaninda requestparamla aynisini kullanir)
         Student student =studentService.findStudent(id);
         return ResponseEntity.ok(student); // student + 200 kod
 
     }
 
     // !!! Delete
-    @DeleteMapping("/{id}") // http://localhost:8080/students/1  + DELETE
+    @DeleteMapping("/{id}") // http://localhost:8088/students/1  + DELETE icine "/{id}" yazmak zorundayim @Pathvariable kullaniyorsam
     public ResponseEntity<Map<String,String>> deleteStudent(@PathVariable("id") Long id) {
 
         studentService.deleteStudent(id);

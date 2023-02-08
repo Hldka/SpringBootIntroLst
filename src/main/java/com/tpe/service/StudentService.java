@@ -33,13 +33,13 @@ public class StudentService {// bu isin bestpractice'i interface , interface gü
 
 
     public Student findStudent(Long id) {
-        return studentRepository.findById(id).orElseThrow(
-                ()-> new ResourceNotFoundException("Student not found with id :" + id));
+        return studentRepository.findById(id).orElseThrow(// yoksa nullpointer exception gelmesin diye
+                ()-> new ResourceNotFoundException("Student not found with id :" + id));// ilerde msessage icin hardcodingler icin cözüm yolu kallanacaz
     }
 
     public void deleteStudent(Long id) {
 
-        Student student = findStudent(id);
+        Student student = findStudent(id);// kendimizi tekrar etmemek icin yukardakini kullandik
         studentRepository.delete(student);
     }
 
