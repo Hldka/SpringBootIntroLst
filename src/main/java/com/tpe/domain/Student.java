@@ -48,8 +48,8 @@ public class Student {
     @Setter(AccessLevel.NONE)
     private LocalDateTime createDate = LocalDateTime.now();// olustugu zamani bilmek icin
 
-  //  @OneToMany(mappedBy = "student")
-   // private List<Book> books = new ArrayList<>();
+    @OneToMany(mappedBy ="student")
+    private List<Book> books = new ArrayList<>();
 
     //@JoinColumn(name="user_id")
    // @OneToOne
