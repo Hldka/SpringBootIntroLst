@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentDTO {
+public class StudentDTO {// gölge obje olusturuyorum
 
     private Long id;
 
@@ -40,14 +40,15 @@ public class StudentDTO {
 
     private LocalDateTime createDate = LocalDateTime.now();
 
-    public StudentDTO(Student student){  // StudentDTO std1 = new StudentDTO(student);
-        this.id= student.getId();
+    public StudentDTO(Student student){  // StudentDTO std1 = new StudentDTO(student); bu Contructor'un amaci bu
+        this.id= student.getId();// bütün fieldlari böyle setliyorum (projede basit yolunu görecegiz )
         this.firstName = student.getName();
         this.lastName = student.getLastName();
         this.email = student.getEmail();
         this.grade = student.getGrade();
         this.phoneNumber= student.getPhoneNumber();
         this.createDate = student.getCreateDate();
+
 
     }
 

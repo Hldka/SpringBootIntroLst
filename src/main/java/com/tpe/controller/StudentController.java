@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.*;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +25,7 @@ import java.util.Map;
 @RequestMapping("/students") // http://localhost:8088/students  bu annnotationlari iliskilendirir dispatcherservlet'e gelenei gerekli class'a gönderiyor
 public class StudentController {
 
-    Logger logger = LoggerFactory.getLogger(StudentController.class);
+    Logger logger = LoggerFactory.getLogger(StudentController.class);// burdan bana dönen deger loglama objesi
 
     @Autowired
     private StudentService studentService;
@@ -58,9 +58,9 @@ public class StudentController {
     }
 
     // !!! Id ile öğrenci getirelim @RequestParam ile
-    @GetMapping("/query") // http://localhost:8080/students/query?id=1
+    @GetMapping("/query") // http://localhost:8088/students/query?id=1    --> endpoint elimde
     public ResponseEntity<Student> getStudent(@RequestParam("id") Long id){// birden fazla icin
-        Student student =studentService.findStudent(id);
+        Student student =studentService.findStudent(id);//
         return ResponseEntity.ok(student);
     }
 
@@ -86,7 +86,7 @@ public class StudentController {
     }
 
     // !!! Update
-    @PutMapping("{id}") // http://localhost:8080/students/1  + PUT + JSON
+    @PutMapping("{id}") // http://localhost:8088/students/1  + PUT + JSON
     public ResponseEntity<Map<String,String>> updateStudent(
                                     @PathVariable("id") Long id, @Valid
                                     @RequestBody StudentDTO studentDTO) {
@@ -114,7 +114,7 @@ public class StudentController {
     }
 
     // !!! Get By LastName
-    @GetMapping("/querylastname")   // http://localhost:8080/students/querylastname
+    @GetMapping("/querylastname")   // http://localhost:8088/student/querylastname
     public ResponseEntity<List<Student>> getStudentByLastName(@RequestParam("lastName") String lastName) {
        List<Student> list = studentService.findStudent(lastName);
 
@@ -122,7 +122,7 @@ public class StudentController {
     }
 
     // !!! Get ALL Student By grade ( JPQL ) Java persistence Query Language
-    @GetMapping("/grade/{grade}")   // http://localhost:8080/students/grade/75 + GET
+    @GetMapping("/grade/{grade}")   // http://localhost:8088/student/grade/75 + GET
     public ResponseEntity<List<Student>> getStudentsEqualsGrade(@PathVariable ("grade") Integer grade) {
         List<Student> list = studentService.findAllEqualsGrade(grade);
 
@@ -130,14 +130,14 @@ public class StudentController {
     }
 
     // !!! DB den direk DTO olarak data alabilir miyim ?
-    @GetMapping("/query/dto")   //  http://localhost:8080/students/query/dto?id=1
+    @GetMapping("/query/dto")   //  http://localhost:8088/student/query/dto?id=1
     public ResponseEntity<StudentDTO> getStudentDTO(@RequestParam("id") Long id) {
         StudentDTO studentDTO = studentService.findStudentDTOById(id);
 
         return ResponseEntity.ok(studentDTO);
     }
 
-    @GetMapping("/welcome")  // http://localhost:8080/students/welcome + GET
+    @GetMapping("/welcome")  // http://localhost:8088/students/welcome + GET
     public String welcome(HttpServletRequest request){ //  HttpServletRequest ile request e ulaştım
         logger.warn("-------------------- Welcome {}", request.getServletPath());
         return "Student Controller a Hoş Geldiniz";
