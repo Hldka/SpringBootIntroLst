@@ -46,3 +46,16 @@ logging:   #logging
     2.ymlveya roperties
     3.postgr baglantisi
     4.server yanlis yazilmis olabilir
+
+
+    Autjentication -> kimsin sisteme kendini tanitiyorsun
+    Authorization--> yetkin var mi?-> rol bazli tanitiyorsun
+    securuty katmani gelince base64 bilgi gelmesi gerekiyor
+    entcode -> ediliyorse record da edilir (tersi alinir)
+    client server'i bilmez , server client'i bilmez
+    securuty yükleince bazi sorumluluklar geliyor
+    spring securuty
+    User --> UserDetails(Bean olarak ekliyorum)
+    Role--> GrantedAuthority(Bean olarak ekliyorum)
+    UserService--> UserDetailService
+configurasyonda bu 3 securuty class'larini olusturacagiz
