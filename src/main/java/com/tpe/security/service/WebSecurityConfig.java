@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.*;
 
 @Configuration//configuration class'im
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)//method seviye securty sagliyor
+//@EnableGlobalMethodSecurity(prePostEnabled = true)//method seviye securty sagliyor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -23,7 +23,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {// get methodu calissa da update e izin vermiyor
         http.csrf().disable().
                 authorizeHttpRequests().
-                antMatchers("/","index.html","/css/*","/js/*").permitAll().// bunlari muaf tut
+                antMatchers("/","index.html","/css/*","/js/*","/register").permitAll().// bunlari muaf tut tregister eklemem lazim
+                and().
+                authorizeRequests().antMatchers("/students/**").hasRole("ADMIN").// class seviyesinde admin 'in yapacaklari belirliyorum
                 anyRequest().//bunun disindaki bütün requestleri
                 authenticated().
                 and().
